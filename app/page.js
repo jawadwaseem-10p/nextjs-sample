@@ -1,95 +1,37 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import classes from "./page.module.css";
+import Link from "next/link";
+import ImageSlideshow from "./components/images/image-slideshow";
+
 
 export default function Home() {
+  // this is server rendered component this gets executed on server and jsx is returned to client
+  // regular anchor tag downloads the whole new page, which we don't want to preserver spa for that we use link
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+    <>
+    <header className={classes.header}>
+      <div className={classes.slideshow}>
+        <ImageSlideshow/>
+      </div>
+      <div>
+        <div className={classes.hero}>
+          <h1> Next level food for Next level Foodies</h1>
+          <p>taste & share the food from all over the world</p>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div className={classes.cta}>
+          <Link href="/community"> Join the community</Link>
+          <Link href="/meals">Explore the meal</Link>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section className={classes.section}>
+        <h2> how it works</h2>
+        <p>This is a food platfor dedicated for meat lovers. You're going to find crazy grilled steaks, smoked BBQ, Afghani Tikka, Baloch Saji and lots more</p>
+        <p>The meals are cooked with great dedication and love to push the known boundaries of the taste</p>
+      </section>
+
+    </main>
+    </>
   );
 }
